@@ -7,5 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tien Duy",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "gravatar": "^1.8.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
+  }
 }
