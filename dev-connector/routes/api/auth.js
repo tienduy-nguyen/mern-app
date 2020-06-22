@@ -9,7 +9,7 @@ dotenv.config();
 
 const User = require('../../models/User');
 //@route  GET api/auth
-//@desc   Auth route
+//@desc   Get Auth User
 //Access  Public
 
 router.get('/', auth, async (req, res) => {
@@ -23,7 +23,7 @@ router.get('/', auth, async (req, res) => {
 });
 
 //@route  POST api/auth
-//@desc   Authenticate user & get token
+//@desc   Auth Login
 //Access  Public
 router.post(
   '/',
