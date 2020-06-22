@@ -1,8 +1,8 @@
 const express = require('express');
-const { body, validationResult } = require('express-validator');
 const gravatar = require('gravatar');
-const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const { body, validationResult } = require('express-validator');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -14,7 +14,7 @@ const router = express.Router();
 //@desc Register user
 //Access Public
 
-router.get(
+router.post(
   '/',
 
   //Using express-validator to check form input
