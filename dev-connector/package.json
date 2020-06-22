@@ -2,14 +2,23 @@
   "name": "dev-connector",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tien Duy",
   "license": "MIT",
   "dependencies": {
-    "gravatar": "^1.8.0"
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "express-validator": "^6.6.0",
+    "gravatar": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.19",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
