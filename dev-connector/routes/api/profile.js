@@ -83,21 +83,18 @@ router.post(
       let profile = await Profile.findOne({ user: req.user.id });
       if (profile) {
         //Update
-        console.log('update');
         profile = await Profile.findOneAndUpdate(
           { user: req.user.id },
           { $set: profileFields },
           { new: true }
         );
-        console.log(profile);
         return res.json(profile);
       }
 
       //Create
       profile = new Profile(profileFields);
-      console.log('Create');
       await profile.save();
-      return res.json(profile);
+      res.json(profile);
     } catch (err) {
       console.log(err.message);
       res.status(500).send('Server Error');
@@ -113,7 +110,7 @@ router.get('/', async (req, res) => {
   try {
     const profiles = await Profile.find().populate('user', ['name', 'avatar']);
 
-    return res.json(profiles);
+    res.json(profiles);
   } catch (err) {
     console.log(err.message);
     res.status(500).send('Server Error');
@@ -131,12 +128,30 @@ router.get('/user/:user_id', async (req, res) => {
     }).populate('user', ['name', 'avatar']);
     if (!profile)
       return res.status(400).json({ msg: 'There is no profile for this user' });
-    return res.json(profile);
+    res.json(profile);
   } catch (err) {
     console.log(err.message);
     if (err.kind == 'ObjectId') {
       return res.status(400).json({ msg: 'Profile not found' });
     }
+    res.status(500).send('Server Error');
+  }
+});
+
+//@route  DELETE api/profile
+//@desc   Delete profile, user & post
+//Access  Public
+router.delete('/', auth, async (req, res) => {
+  try {
+    //Remove profile
+    await Profile.findOneAndRemove({ user: req.user.id });
+
+    //Remove user
+    await User.findOneAndRemove({ _id: req.user.id });
+
+    res.json({ msg: 'User deleted' });
+  } catch (err) {
+    console.log(err.message);
     res.status(500).send('Server Error');
   }
 });
