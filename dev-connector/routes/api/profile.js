@@ -5,7 +5,7 @@ const auth = require('../../middleware/auth');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 
-//@route  GET api/profile
+//@route  GET api/profile/me
 //@desc   Get current user profile
 //Access  Public
 
@@ -99,10 +99,46 @@ router.post(
       await profile.save();
       return res.json(profile);
     } catch (err) {
-      console.error(err.message);
-      return res.status(500).send('Server Error');
+      console.log(err.message);
+      res.status(500).send('Server Error');
     }
   }
 );
+
+//@route  GET api/profile
+//@desc   Get all profiles
+//Access  Public
+
+router.get('/', async (req, res) => {
+  try {
+    const profiles = await Profile.find().populate('user', ['name', 'avatar']);
+
+    return res.json(profiles);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+//@route  GET api/profile/user/:user_id
+//@desc   Get profiles by user ID
+//Access  Public
+
+router.get('/user/:user_id', async (req, res) => {
+  try {
+    const profile = await Profile.findOne({
+      user: req.params.user_id,
+    }).populate('user', ['name', 'avatar']);
+    if (!profile)
+      return res.status(400).json({ msg: 'There is no profile for this user' });
+    return res.json(profile);
+  } catch (err) {
+    console.log(err.message);
+    if (err.kind == 'ObjectId') {
+      return res.status(400).json({ msg: 'Profile not found' });
+    }
+    res.status(500).send('Server Error');
+  }
+});
 
 module.exports = router;
