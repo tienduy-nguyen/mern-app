@@ -7,7 +7,7 @@ const User = require('../../models/User');
 
 //@route  GET api/profile/me
 //@desc   Get current user profile
-//Access  Public
+//Access  Private
 
 router.get('/me', auth, async (req, res) => {
   try {
@@ -26,7 +26,7 @@ router.get('/me', auth, async (req, res) => {
 
 //@route  POST api/profile
 //@desc   Create & update profile route
-//Access  Public
+//Access  Private
 
 router.post(
   '/',
@@ -140,7 +140,7 @@ router.get('/user/:user_id', async (req, res) => {
 
 //@route  DELETE api/profile
 //@desc   Delete profile, user & post
-//Access  Public
+//Access  Private
 router.delete('/', auth, async (req, res) => {
   try {
     //Remove profile
@@ -158,7 +158,7 @@ router.delete('/', auth, async (req, res) => {
 
 //@route  PUT api/profile/experience
 //@desc   Add profile experience
-//Access  Public
+//Access  private
 router.put(
   '/experience',
   [
@@ -206,5 +206,27 @@ router.put(
     }
   }
 );
+
+//@route  DELETE api/profile/experience/exp_id
+//@desc   Delete experience from profile
+//Access  Private
+router.delete('/experience/:exp_id', auth, async (req, res) => {
+  try {
+    //Remove profile
+    const profile = await Profile.findOne({ user: req.user.id });
+
+    // get remove index
+    const removeIndex = profile.experience
+      .map((item) => item.id)
+      .indexOf(req.params.exp_id);
+
+    profile.experience.splice(removeIndex, 1);
+    await profile.save();
+    res.json(profile);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 
 module.exports = router;
