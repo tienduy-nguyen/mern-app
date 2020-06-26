@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 export const Login = () => {
   return (
-    <section class='container'>
-      <div class='alert alert-danger'>Invalid credentials</div>
-      <h1 class='large text-primary'>Sign In</h1>
-      <p class='lead'>
-        <i class='fas fa-user'></i> Sign into Your Account
+    <Fragment>
+      <div className='alert alert-danger'>Invalid credentials</div>
+      <h1 className='large text-primary'>Sign In</h1>
+      <p className='lead'>
+        <i className='fas fa-user'></i> Sign into Your Account
       </p>
-      <form class='form' action='dashboard.html'>
-        <div class='form-group'>
+      <form className='form' action='dashboard.html'>
+        <div className='form-group'>
           <input
             type='email'
             placeholder='Email Address'
@@ -17,15 +17,15 @@ export const Login = () => {
             required
           />
         </div>
-        <div class='form-group'>
+        <div className='form-group'>
           <input type='password' placeholder='Password' name='password' />
         </div>
-        <input type='submit' class='btn btn-primary' value='Login' />
+        <input type='submit' className='btn btn-primary' value='Login' />
       </form>
-      <p class='my-1'>
+      <p className='my-1'>
         Don't have an account? <a href='register.html'>Sign Up</a>
       </p>
-    </section>
+    </Fragment>
   );
 };
 
