@@ -12,3 +12,4 @@ npm i -D nodemon concurrently
 
 - Initial components Navbar & Landing Page
 - Using react router
+- Using Redux store
