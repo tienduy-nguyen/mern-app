@@ -2,6 +2,9 @@ import axios from 'axios';
 import * as Types from '../constants/types';
 import { setAlert } from './alert';
 
+// Load user
+export const loadUser = () => async (dispatch) => {};
+
 //Register user
 export const register = ({ name, email, password }) => async (dispatch) => {
   const config = {
