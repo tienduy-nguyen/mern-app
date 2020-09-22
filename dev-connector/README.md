@@ -1,4 +1,12 @@
-# Social developer connector
+# Social Developer Connector
+
+## Technologies
+- Nodejs, express for backend
+- React, Redux
+- JWT (Json Web Tokens)
+- MongoDB, Mongoose
+- Bcrypt Password hashing
+- Heroku
 
 ## Pre-install package
 

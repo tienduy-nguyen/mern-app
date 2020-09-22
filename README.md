@@ -1,3 +1,3 @@
-# mern-app
+# MONGODB - EXPRESS - REACT - NODEJS (MERN)
 
-Projects MEARN stack
+Projects MERN stack

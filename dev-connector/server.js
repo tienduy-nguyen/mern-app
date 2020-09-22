@@ -9,6 +9,7 @@ connectDB();
 //Init Middleware
 app.use(express.json({ extends: false }));
 
+// Root path of project
 app.get('/', (req, res) => res.send('API running'));
 
 //Define routes
