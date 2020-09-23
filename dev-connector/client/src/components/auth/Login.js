@@ -52,6 +52,7 @@ export const Login = ({ login, isAuthenticated }) => {
             name='password'
             value={password}
             onChange={(e) => onChange(e)}
+            autoComplete='password'
           />
         </div>
         <input type='submit' className='btn btn-primary' value='Login' />
