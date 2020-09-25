@@ -72,3 +72,53 @@ $ git merge master
 ```
 
 Once merged you can push to heroku as above and your site will rebuild and be updated.
+
+### Config server.js to pre-deploy heroku
+
+```json
+{
+  "name": "dev-connector",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon server.js",
+    "start": "node server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm i --prefix client && npm run build --prefix client",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tien Duy",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.6.0",
+    "gravatar": "^1.8.1",
+    "http-proxy-middleware": "^1.0.4",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.0",
+    "mongoose": "^5.9.19",
+    "normalize-url": "^5.1.0",
+    "react-moment": "^0.9.7",
+    "react-redux": "^7.2.1",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
+  },
+  "engines": {
+    "node": "12.18.3"
+  }
+}
+
+```
