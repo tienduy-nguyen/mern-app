@@ -6,7 +6,7 @@
   ```
   $ npx create-react-app client
   $ cd client
-  $ npm i axios react-router-dom redux-react-redux redux-thunk moment
+  $ npm i axios react-router-dom react-redux redux-thunk moment
   $ npm run dev
   ```
 - Delete unused files `App.test.js`, `index.css`, `logo.svg`, `serviceWorker.js` and delete import in `index.js` and `App.js`

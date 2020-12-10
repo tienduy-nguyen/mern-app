@@ -26,12 +26,6 @@
     "moment": "^2.29.0",
     "mongoose": "^5.9.19",
     "normalize-url": "^5.1.0",
-    "react-moment": "^0.9.7",
-    "react-redux": "^7.2.1",
-    "react-router-dom": "^5.2.0",
-    "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0",
     "request": "^2.88.2"
   },
   "devDependencies": {
@@ -39,6 +33,6 @@
     "nodemon": "^2.0.4"
   },
   "engines": {
-    "node": "12.18.3"
+    "node": "14.15.1"
   }
 }
