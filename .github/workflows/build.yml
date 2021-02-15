@@ -23,8 +23,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install dependencies
+      - name: Install serve dependencies
         run: yarn install
+      - run: yarn --cwd client install
 
       - name: Build client
         run: yarn --cwd client build
