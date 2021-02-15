@@ -29,3 +29,40 @@ jobs:
 
       - name: Build client
         run: yarn --cwd client build
+
+#------------------------------------------------------------------------
+# If we want to check deploy with heroku
+# Create a file heroku.yml in .github/workflow and paste the following code
+
+
+# name: Deploy Heroku
+
+# on:
+#   push:
+#     branches: [master]
+#   pull_request:
+#     branches: [master]
+
+# jobs:
+#   heroku:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Updating Ubuntu system and Heroku
+#         env: 
+#           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+#         run: sudo apt update && sudo apt install heroku neofetch
+#       - name: Checking the info
+#         run: neofetch
+
+#       - uses: akhileshns/heroku-deploy@v3.11.10 # This is the action
+#         with:
+#           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+#           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+#           heroku_email: ${{secrets.HEROKU_EMAIL}}
+#           branch: HEAD
+#           useforce: false
+#           dynamicFiles: false
