@@ -23,17 +23,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install dependencies
+      - name: Install serve dependencies
         run: yarn install
+      - run: yarn --cwd client install
 
-      - name: Build local
-        run: yarn build
-
-      # - name: Deploy to netlify
-      #   uses: netlify/actions/cli@master
-      #   env:
-      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-      #     NETLIFY_SITE_ID: ${{ secrets.DEV_NETLIFY_SITE_ID }}
-      #   with:
-      #     args: deploy --dir=build --prod
-      #     secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
+      - name: Build client
+        run: yarn --cwd client build
